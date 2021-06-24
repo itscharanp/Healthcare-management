@@ -1,0 +1,226 @@
+
+
+
+<div class="row">
+
+   
+    
+
+    <div class="col-md-4" id="hello" class="card card-container" style="background-color:white;">
+      <h4 style="text-align: center;color: red;">  Store and Update Doctor details  </h4>
+      <br>
+      <form #f="ngForm"
+        *ngIf="!isSuccessful"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        
+        novalidate
+      >
+<!-- 
+        // ID    -->
+        <div class="form-group" >
+          <label  style="color:red;" for="form.id"> <h6>Doctor Id </h6></label>
+          <input
+            type="text"
+            class="form-control"
+            name="id"
+            [(ngModel)]="form.did"
+            required
+            minlength="1"
+            maxlength="20"
+            #id="ngModel"
+          />
+          <div class="alert-danger" *ngIf="id.errors && f.submitted">
+            <div *ngIf="id.errors.required"> <h6 >ID is required </h6></div>
+            <div *ngIf="id.errors.minlength">
+             ID must be at least 1 character.
+            </div>
+            <div *ngIf="id.errors.maxlength">
+             ID must be at most 10 characters.
+            </div>
+          </div>
+        </div>
+
+
+          
+        <div class="form-group">
+          <label  style="color:red;" for="form.name"> <h6> Doctor Name </h6></label>
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            [(ngModel)]="form.dname"
+            required
+            minlength="2"
+            maxlength="10"
+            #name="ngModel"
+          />
+          <div class="alert-danger" *ngIf="name.errors && f.submitted">
+            <div *ngIf="name.errors.required"> <h6 > Name is required </h6></div>
+            <div *ngIf="name.errors.minlength">
+             Name must be at least 2 character.
+            </div>
+            <div *ngIf="name.errors.maxlength">
+             Name must be at most 10 characters.
+            </div>
+          </div>
+        </div>
+
+
+        
+        <!-- // Email  -->
+
+
+    
+
+
+
+        <div class="form-group">
+          <label  style="color:red;" for="form.phonenumber"> <h6> Availabilty </h6></label>
+          <input
+            type="text"
+            class="form-control"
+            name="availability"
+            [(ngModel)]="form.availability"
+            required
+            minlength="1"
+            maxlength="1"
+            #phonenumber="ngModel"
+          />
+          <div class="alert-danger" *ngIf="phonenumber.errors && f.submitted">
+            <div *ngIf="phonenumber.errors.required"> <h6 > Availabilty  is required </h6></div>
+            <div *ngIf="phonenumber.errors.minlength">
+            Availabilty no must be at least 1 character.
+            </div>
+            <div *ngIf="phonenumber.errors.maxlength">
+              Availabilty  no must be at most 1 character.
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+        <label   style="color:red;" for="email"><h6>Email</h6></label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="form.emailid"
+          required
+          email
+          #email="ngModel"
+        />
+        <div class="alert-danger" *ngIf="email.errors && f.submitted">
+          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.email">
+            Email must be a valid email address
+          </div>
+        </div>
+      </div>
+
+        <div class="form-group">
+          <label  style="color:red;" for="form.bloodgroup"> <h6>Specialization </h6></label>
+          <input
+            type="text"
+            class="form-control"
+            name="specialization"
+            [(ngModel)]="form.specialization"
+            required
+            minlength="3"
+            maxlength="30"
+            #bloodgroup="ngModel"
+          />
+          <div class="alert-danger" *ngIf="bloodgroup.errors && f.submitted">
+            <div *ngIf="bloodgroup.errors.required"> <h6 > Specialization is required </h6></div>
+            <div *ngIf="bloodgroup.errors.minlength">
+              Specialization must be at least 2 character.
+            </div>
+            <div *ngIf="bloodgroup.errors.maxlength">
+              Specialization be at most 30 characters.
+            </div>
+          </div>
+        </div>
+
+
+        
+        <div class="form-group">
+          <label  style="color:red;" for="form.date"> <h6> Slot </h6></label>
+          <input
+            type="text"
+            class="form-control"
+            name="slot"
+            [(ngModel)]="form.slot"
+            required
+            #date="ngModel"
+          />
+          <div class="alert-danger" *ngIf="date.errors && f.submitted">
+            <div *ngIf="date.errors.required"> <h6 > Slot is required </h6></div>
+          </div>
+        </div>
+
+         
+        <div class="form-group" >
+          <button style = "background-color: red;"   (click)="onSubmit()"   class="btn btn-primary btn-block"><h6>Store Details</h6>
+          </button>
+        </div>
+  
+          
+        <div class="form-group" >
+          <button style = "background-color: red;"   (click)="onSubmit()"   class="btn btn-primary btn-block"><h6>Update Details</h6>
+          </button>
+        </div>            
+
+
+
+        <br>
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+         Storing details failed!<br />{{ errorMessage }}
+        </div>
+      </form> 
+    </div>
+
+   <div  class="col-md-8" >
+
+      <br>
+      <button (click)="logout()">  Logout </button>
+
+      <br>
+      <table style="width: 150px; border-color:black;border-width:3px;" >
+          <thead style="background-color: red;">
+              <tr style="color:white">
+                  <th>Doctor ID</th>
+                  <th>Availabilty</th>
+                  <th>Doctor Name</th>
+                  <th>Email Id</th>
+                  <th>Specialization</th>
+                  <th>Slot</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let tempDonor of donors">
+                <td>{{tempDonor.did}} </td>
+                <td>{{tempDonor.availability}}</td>
+                <td>{{tempDonor.dname}}</td>
+                <td>{{tempDonor.emailid}}</td>
+                <td>{{tempDonor.specialization}}</td>
+                <td>{{tempDonor.slot}}</td>
+                <td><button type="button"  href="#hello" (click)="edit(tempDonor)" class="btn btn-primary" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal">
+                  Edit
+              </button></td>
+          <td> <button id="remove"  (click)="onDelete(tempDonor.did)"   class="btn btn-primary "><h6>Delete </h6>
+          </button>
+        </td>
+                  <td><button type="button" class="btn btn-danger" (click) = "clear()"
+                    >Clear</button></td>
+            </tr>
+        </tbody>
+     
+      </table>
+
+    </div>
+    
+      
+  
+
+</div>

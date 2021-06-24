@@ -1,0 +1,49 @@
+<!-- 
+
+
+    <div class="row">
+
+    <div class="card card-container" class="col-md-8">
+
+    <br>
+
+
+    
+
+    
+    <button type ="button" (click) = "navigate()" style="margin-left:0px;padding: 60px;" class="card card-container"> 
+        
+        <b style="text-align: center;color: red;"> Click here to  Manage Your Donors </b> 
+        <br>
+        <h6 style="text-align: center;color: red;"> Welcome to User Dashboard !!</h6>
+    </button>
+        
+    <br>
+    <table class="table">
+        <thead style="background-color: red;">
+            <tr style="color:white">
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phonenumber</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tempUser of users"  [attr.id]="tempUser.id" >
+
+              <td>{{tempUser.name}} {{tempUser.id}} </td>
+              <td>{{tempUser.email}}</td>
+              <td>{{tempUser.phonenumber}}</td>
+              <td>  
+                
+      <button id="remove"  (click)="onSubmit(tempUser.id)"  style = "background-color: red;" class="btn btn-primary btn-block"><h6>Delete User </h6>
+                </button>
+              </td>
+          </tr>
+      </tbody>
+   
+    </table>
+  </div>
+
+  </div>
+   -->
