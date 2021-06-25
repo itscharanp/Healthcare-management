@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="mt-5">
+    <button (click)="logout()"> Logout  </button>
+    <button (click)="nav()" style="margin-left: 30px;"> Go to class room messages </button>  
+    <br/>
+    <br/>
+  
+
+
+
+    <h4> Professor Dashboard</h4>
+
+
+    <br/>
+    <br/>
+  
+  
+   
+    <table class="table table-bordered">
+      <thead class="thead">
+          <tr>
+            <th>Professor ID</th>
+              <th>Professor Name</th>
+              <th>EMail</th>
+              <th>Department</th>
+              <th>Course Name</th>
+              <th>Link Resources</th>
+          </tr>
+      </thead>
+      <tbody class="tbody">
+          <tr *ngFor="let doctor of doctors">
+                <td>{{doctor.pid}}</td>
+              <td>{{doctor.pname}}</td>
+              <td>{{doctor.emailid}}</td>
+              <td>{{doctor.department}}</td>
+              <td>{{doctor.course}}</td>
+              <td><a href="{{doctor.resources}}" download>
+                {{doctor.resources}}
+              </a></td>
+           
+          </tr>
+      </tbody>
+  </table>
+    
+
+
+  </div>
+</div>

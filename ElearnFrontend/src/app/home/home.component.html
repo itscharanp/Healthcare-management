@@ -1,0 +1,143 @@
+
+
+
+<div class="row">
+
+   
+    
+
+    <div class="col-md-4" id="hello" class="card card-container" style="background-color:white;">
+      <h4 style="text-align: center;color:#0E86D4;">  Add Resource Links </h4>
+      <br>
+      <form #f="ngForm"
+        *ngIf="!isSuccessful"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        
+        novalidate
+      >
+<!-- 
+        // ID    -->
+        
+        <div class="form-group">
+            <label  style="color:red;" for="form.date"> <h6> ID</h6></label>
+            <input
+              type="text"
+              class="form-control"
+              name="id"
+              [(ngModel)]="form.pid"
+              required
+              #id="ngModel"
+            />
+            <div class="alert-danger" *ngIf="id.errors && f.submitted">
+              <div *ngIf="id.errors.required"> <h6 > Id is required </h6></div>
+            </div>
+          </div>  
+
+        
+
+
+
+
+
+
+        
+        <div class="form-group">
+          <label  style="color:red;" for="form.date"> <h6> Resources </h6></label>
+          <input
+            type="text"
+            class="form-control"
+            name="resources"
+            [(ngModel)]="form.resources"
+            required
+            #date="ngModel"
+          />
+          <div class="alert-danger" *ngIf="date.errors && f.submitted">
+            <div *ngIf="date.errors.required"> <h6 > Resources is/are required </h6></div>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="form-group">
+          <label  style="color:red;" for="form.date"> <h6> Class Messages <sub> Not mandatory </sub> </h6></label>
+          <input
+            type="text"
+            class="form-control"
+            name="slot"
+            [(ngModel)]="form.classmssg"
+          />
+          
+        </div>
+
+         
+        <div class="form-group" >
+          <button style = "background-color: red;"   (click)="onSubmit()"   class="btn btn-primary btn-block"><h6>Store Details</h6>
+          </button>
+        </div>
+  
+          
+        <div class="form-group" >
+          <button style = "background-color: red;"   (click)="onSubmit()"   class="btn btn-primary btn-block"><h6>Update Details</h6>
+          </button>
+        </div>            
+
+
+
+        <br>
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+         Storing details failed!<br />{{ errorMessage }}
+        </div>
+      </form> 
+    </div>
+
+   <div  class="col-md-8" >
+
+    <button (click)="logout()">  Logout </button>
+
+      <br>
+      <table style="width: 150px; border-color:black;border-width:3px;" >
+          <thead style="background-color:#0E86D4;">
+              <tr style="color:white">
+                  <th>Your Employee ID</th>
+                  <th>Full Name</th>
+                  <th>Email Id</th>
+                  <th>Department</th>
+                  <th>Course</th>
+                  <th>Resources</th>
+                  <th>Class Messages </th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td>{{prof.pid}} </td>
+                <td>{{prof.pname}}</td>
+                <td>{{prof.emailid}}</td>
+                <td>{{prof.department}}</td>
+                <td>{{prof.course}}</td>
+                <td><a href="{{prof.resources}}" download>
+                  {{prof.resources}}
+                </a></td>
+                <td>{{prof.classmssg}}</td>
+                <td><button type="button"  href="#hello" (click) = edit(prof)  class="btn btn-primary" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal">
+                  Edit
+              </button></td>
+         
+                  <td><button type="button" class="btn btn-danger" (click) = "clear()"
+                    > Clear</button></td>
+            </tr>
+
+            
+        </tbody>
+     
+      </table>
+
+    </div>
+    
+      
+  
+
+</div>
